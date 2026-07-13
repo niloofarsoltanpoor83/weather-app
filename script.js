@@ -1,4 +1,6 @@
-document.getElementById("searchBtn").addEventListener("click", getWeather);
+
+console.log("Script Loaded");
+    document.getElementById("searchBtn").addEventListener("click", getWeather);
 
 async function getWeather(){
 
