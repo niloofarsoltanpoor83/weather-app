@@ -1,4 +1,4 @@
-
+console.log("Button clicked");
 console.log("Script Loaded");
     document.getElementById("searchBtn").addEventListener("click", getWeather);
 
