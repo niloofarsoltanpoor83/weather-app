@@ -7,9 +7,10 @@ async function getWeather() {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
     const response = await fetch(url);
-
+console.log(response);
     const data = await response.json();
 
+console.log(data);
     if (data.cod == "404") {
 
         document.getElementById("weatherResult").innerHTML =
