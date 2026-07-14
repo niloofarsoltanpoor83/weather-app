@@ -1,3 +1,4 @@
+console.log("Buttonclicked");
 async function getWeather() {
 
     const city = document.getElementById("cityInput").value;
