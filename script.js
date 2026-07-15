@@ -21,7 +21,8 @@ async function getWeather() {
     const response = await fetch(url);
 console.log(response);
     const data = await response.json();
-
+const icon = data.weather[0].icon;
+const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 console.log(data);
     if (data.cod == "404") {
 
