@@ -87,7 +87,11 @@ async function getWeather() {
         console.log(error);
 
         document.getElementById("weatherResult").innerHTML =
-        "<h2>Error loading weather</h2>";
+       <h2>${data.name}</h2>
+
+<img src="${iconUrl}" alt="Weather Icon">
+
+<p><strong>Temperature:</strong> ${data.main.temp} °C</p>
 
     }
 
