@@ -2,11 +2,13 @@ const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
 document.getElementById("searchBtn").addEventListener("click", getWeather);
 document.getElementById("cityInput").addEventListener("keydown", function(event) {
+    console.log("Key:", event.key);
 
     if (event.key === "Enter") {
+        event.preventDefault();
+        console.log("Enter detected");
         getWeather();
     }
-
 });
 console.log("Buttonclicked");
 async function getWeather() {
