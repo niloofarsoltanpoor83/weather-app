@@ -117,7 +117,7 @@ else {
 
         <p><strong>Max Temp:</strong> ${data.main.temp_max} °C</p>
 
-        `;
+        `;}
 catch (error) {
     alert(error);
 
