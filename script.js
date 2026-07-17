@@ -82,17 +82,15 @@ async function getWeather() {
         `;
 
 
-    } catch(error) {
+   } catch(error) {
 
-        console.log(error);
+    console.log(error);
 
-        document.getElementById("weatherResult").innerHTML =
-       <h2>${data.name}</h2>
+    document.getElementById("weatherResult").innerHTML =
+   <h2>${data.name}</h2>
 
 <img src="${iconUrl}" alt="Weather Icon">
 
 <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
-
-    }
 
 }
