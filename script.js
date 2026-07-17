@@ -76,30 +76,7 @@ else if (weather === "Snow") {
 else {
     body.classList.add("default");
 }    
-console.log(weather);
-const body = document.body;
 
-body.className = "";
-
-if (weather === "Clear") {
-    body.classList.add("sunny");
-}
-
-else if (weather === "Clouds") {
-    body.classList.add("cloudy");
-}
-
-else if (weather === "Rain" || weather === "Drizzle") {
-    body.classList.add("rainy");
-}
-
-else if (weather === "Snow") {
-    body.classList.add("snowy");
-}
-
-else {
-    body.classList.add("default");
-}
         console.log(data);
 
 
