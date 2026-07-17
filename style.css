@@ -114,3 +114,68 @@ else if (weather === "Snow") {
 else {
     body.classList.add("default");
 }
+#weatherAnimation{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.sun{
+    position:absolute;
+    top:40px;
+    right:40px;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#FFD93D;
+    box-shadow:0 0 40px #FFD93D;
+    animation:spin 20s linear infinite;
+}
+
+.cloud{
+    position:absolute;
+    top:80px;
+    left:-150px;
+    width:140px;
+    height:60px;
+    background:white;
+    border-radius:50px;
+    opacity:.8;
+    animation:moveCloud 18s linear infinite;
+}
+
+.cloud::before{
+    content:"";
+    position:absolute;
+    width:60px;
+    height:60px;
+    background:white;
+    border-radius:50%;
+    top:-25px;
+    left:20px;
+}
+
+.cloud::after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:white;
+    border-radius:50%;
+    top:-35px;
+    right:20px;
+}
+
+@keyframes moveCloud{
+    from{left:-180px;}
+    to{left:110%;}
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
