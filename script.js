@@ -45,8 +45,31 @@ const weather = data.weather[0].main;
 
 animation.innerHTML = "";
 
-if(weather === "Clear"){
-    animation.innerHTML = `<div class="sun"></div>`;
+function showWeatherAnimation(weather){
+
+const animation = document.getElementById("weatherAnimation");
+
+animation.innerHTML="";
+
+if(weather==="Clear"){
+    animation.innerHTML=`
+    <div class="sun"></div>
+    `;
+}
+
+else if(weather==="Clouds"){
+    animation.innerHTML=`
+    <div class="cloud"></div>
+    <div class="cloud cloud2"></div>
+    `;
+}
+
+else if(weather==="Rain"){
+    animation.innerHTML=`
+    <div class="rain"></div>
+    `;
+}
+
 }
 
 if(weather === "Clouds"){
