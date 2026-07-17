@@ -86,5 +86,6 @@ async function getWeather() {
     console.log(error);
 
     document.getElementById("weatherResult").innerHTML =
-    "<h2>Something went wrong!</h2>";}
-            }
+    "<h2>Something went wrong!</h2>";
+    }
+}
