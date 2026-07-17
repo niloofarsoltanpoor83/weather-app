@@ -70,3 +70,22 @@ button:hover{
     display:block;
     margin:10px auto;
 }
+body.sunny {
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+}
+
+body.cloudy {
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+}
+
+body.rainy {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+body.snowy {
+    background: linear-gradient(135deg, #e6dada, #274046);
+}
+
+body.default {
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+}
