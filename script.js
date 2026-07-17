@@ -40,70 +40,12 @@ async function getWeather() {
 
         const data = await response.json();
         
+
 const weather = data.weather[0].main;
-        console.log(weather);
-        showWeatherAnimation(weather);
-  const animation = document.getElementById("weatherAnimation");
 
-animation.innerHTML = "";
+console.log(weather);
 
-function showWeatherAnimation(weather){
-
-const animation = document.getElementById("weatherAnimation");
-
-animation.innerHTML="";
-
-if(weather==="Clear"){
-    animation.innerHTML=`
-    <div class="sun"></div>
-    `;
-}
-
-else if(weather==="Clouds"){
-    animation.innerHTML=`
-    <div class="cloud"></div>
-    <div class="cloud cloud2"></div>
-    `;
-}
-
-{else if(weather === "Rain"){
-
-    animation.innerHTML = `
-    <div class="rain"></div>
-    `;
-
-
-    const rain = document.querySelector(".rain");
-
-
-    for(let i=0; i<50; i++){
-
-        const drop = document.createElement("div");
-
-        drop.className = "drop";
-
-        drop.style.left = Math.random()*100 + "%";
-
-        drop.style.animationDuration =
-        (Math.random()*0.5 + 0.5) + "s";
-
-
-        rain.appendChild(drop);
-
-    }
-
-}
-    animation.innerHTML=`
-    <div class="rain"></div>
-    `;
-}
-
-}
-
-if(weather === "Clouds"){
-    animation.innerHTML = `<div class="cloud"></div>`;
-}
-
+showWeatherAnimation(weather);
 const body = document.body;
 
 body.className = "";
@@ -178,3 +120,54 @@ else {
     "<h2>Something went wrong!</h2>";
 }
    }
+function showWeatherAnimation(weather){
+
+    const animation = document.getElementById("weatherAnimation");
+
+    animation.innerHTML = "";
+
+
+    if(weather === "Clear"){
+
+        animation.innerHTML = `
+        <div class="sun"></div>
+        `;
+
+    }
+
+    else if(weather === "Clouds"){
+
+        animation.innerHTML = `
+        <div class="cloud"></div>
+        `;
+
+    }
+
+    else if(weather === "Rain" || weather === "Drizzle" || weather === "Thunderstorm"){
+
+        animation.innerHTML = `
+        <div class="rain"></div>
+        `;
+
+
+        const rain = document.querySelector(".rain");
+
+
+        for(let i=0; i<50; i++){
+
+            const drop = document.createElement("div");
+
+            drop.className = "drop";
+
+            drop.style.left = Math.random()*100 + "%";
+
+            drop.style.animationDuration =
+            (Math.random()*0.5 + 0.5) + "s";
+
+
+            rain.appendChild(drop);
+        }
+
+    }
+
+}
