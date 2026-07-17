@@ -65,7 +65,33 @@ else if(weather==="Clouds"){
     `;
 }
 
-else if(weather==="Rain"){
+else if(weather==="Rain"){else if(weather === "Rain"){
+
+    animation.innerHTML = `
+    <div class="rain"></div>
+    `;
+
+
+    const rain = document.querySelector(".rain");
+
+
+    for(let i=0; i<50; i++){
+
+        const drop = document.createElement("div");
+
+        drop.className = "drop";
+
+        drop.style.left = Math.random()*100 + "%";
+
+        drop.style.animationDuration =
+        (Math.random()*0.5 + 0.5) + "s";
+
+
+        rain.appendChild(drop);
+
+    }
+
+}
     animation.innerHTML=`
     <div class="rain"></div>
     `;
