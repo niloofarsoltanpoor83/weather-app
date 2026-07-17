@@ -41,7 +41,17 @@ async function getWeather() {
         const data = await response.json();
         
 const weather = data.weather[0].main;
-    const weather = data.weather[0].main;
+  const animation = document.getElementById("weatherAnimation");
+
+animation.innerHTML = "";
+
+if(weather === "Clear"){
+    animation.innerHTML = `<div class="sun"></div>`;
+}
+
+if(weather === "Clouds"){
+    animation.innerHTML = `<div class="cloud"></div>`;
+}
 
 const body = document.body;
 
