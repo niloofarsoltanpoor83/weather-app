@@ -41,6 +41,7 @@ async function getWeather() {
         const data = await response.json();
         
 const weather = data.weather[0].main;
+        showWeatherAnimation(weather);
   const animation = document.getElementById("weatherAnimation");
 
 animation.innerHTML = "";
