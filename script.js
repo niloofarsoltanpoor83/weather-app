@@ -118,11 +118,11 @@ else {
         <p><strong>Max Temp:</strong> ${data.main.temp_max} °C</p>
 
         `;
-} catch (error) {
+catch (error) {
+    alert(error);
 
-    console.log(error);
+    console.error(error);
 
     document.getElementById("weatherResult").innerHTML =
     "<h2>Something went wrong!</h2>";
-    }
 }
