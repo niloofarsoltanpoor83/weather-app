@@ -41,7 +41,7 @@ async function getWeather() {
         const data = await response.json();
         
 const weather = data.weather[0].main;
-
+console.log(weather);
 const body = document.body;
 
 body.className = "";
