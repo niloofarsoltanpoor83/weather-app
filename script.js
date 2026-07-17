@@ -66,7 +66,7 @@ else if(weather==="Clouds"){
     `;
 }
 
-else if(weather==="Rain"){else if(weather === "Rain"){
+{else if(weather === "Rain"){
 
     animation.innerHTML = `
     <div class="rain"></div>
