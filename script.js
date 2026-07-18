@@ -82,44 +82,7 @@ async function getWeather() {
 
     }
 }
-        const icon = data.weather[0].icon;
-
-        const iconUrl =
-        `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-
-
-        document.getElementById("weatherResult").innerHTML = `
-
-        <h2>${data.name}</h2>
-
-        <img src="${iconUrl}" alt="Weather Icon">
-
-
-        <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
-
-        <p><strong>Weather:</strong> ${data.weather[0].description}</p>
-
-        <p><strong>Feels Like:</strong> ${data.main.feels_like} °C</p>
-
-        <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
-
-        <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
-
-        <p><strong>Min Temp:</strong> ${data.main.temp_min} °C</p>
-
-        <p><strong>Max Temp:</strong> ${data.main.temp_max} °C</p>
-
-        `;
-    }catch (error) {
-    alert(error);
-
-    console.error(error);
-
-    document.getElementById("weatherResult").innerHTML =
-    "<h2>Something went wrong!</h2>";
-}
-   }
+        
 function showWeatherAnimation(weather){
 
     const animation = document.getElementById("weatherAnimation");
@@ -148,7 +111,7 @@ function showWeatherAnimation(weather){
         animation.innerHTML = `
         <div class="rain"></div>
         `;
-}
+
 
         const rain = document.querySelector(".rain");
 
