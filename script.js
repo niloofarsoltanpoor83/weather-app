@@ -130,5 +130,3 @@ function showWeatherAnimation(weather){
         }
 
     }
-
-}
