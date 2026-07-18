@@ -63,7 +63,6 @@ else if (weather === "Snow") {
 else {
     body.classList.add("default");
 }
-const weather = data.weather[0].main;
 
 console.log(weather);
 
