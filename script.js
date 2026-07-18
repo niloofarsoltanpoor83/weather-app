@@ -64,8 +64,6 @@ else {
     body.classList.add("default");
 }
 
-console.log(weather);
-
 showWeatherAnimation(weather);
 const body = document.body;
 
