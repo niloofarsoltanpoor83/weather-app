@@ -148,7 +148,7 @@ function showWeatherAnimation(weather){
         animation.innerHTML = `
         <div class="rain"></div>
         `;
-
+}
 
         const rain = document.querySelector(".rain");
 
