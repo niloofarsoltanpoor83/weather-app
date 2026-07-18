@@ -200,3 +200,22 @@ else {
     }
 
 }
+body.default{
+    background:linear-gradient(135deg,#74ebd5,#9face6);
+}
+
+body.sunny{
+    background:linear-gradient(135deg,#56ccf2,#f2c94c);
+}
+
+body.cloudy{
+    background:linear-gradient(135deg,#757f9a,#d7dde8);
+}
+
+body.rainy{
+    background:linear-gradient(135deg,#314755,#26a0da);
+}
+
+body.snowy{
+    background:linear-gradient(135deg,#e6dada,#274046);
+}
