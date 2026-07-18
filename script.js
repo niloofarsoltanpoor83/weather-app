@@ -74,9 +74,8 @@ async function getWeather() {
         else {
             body.classList.add("default");
         }
-
-        
-catch(error){
+    }
+catch (error){
         document.getElementById("weatherResult").innerHTML =
         "<h2>Something went wrong!</h2>";
 }
