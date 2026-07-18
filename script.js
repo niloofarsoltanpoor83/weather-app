@@ -79,9 +79,6 @@ async function getWeather() {
 
         document.getElementById("weatherResult").innerHTML =
         "<h2>Something went wrong!</h2>";
-
-    }
-}
         
 function showWeatherAnimation(weather){
 
