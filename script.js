@@ -45,14 +45,10 @@ async function getWeather() {
             "<h2>City not found!</h2>";
 
             return;
-            <p id="updteTime"></p>`;
+
         }
-
         const weather = data.weather[0].main;
-const now = new Date();
 
-document.getElementById("updateTime").innerHTML =
-`Updated: ${now.getHours()}:${now.getMinutes()}`;
         showWeatherAnimation(weather);
 
         const body = document.body;
