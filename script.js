@@ -43,9 +43,7 @@ async function getWeather() {
 
             document.getElementById("weatherResult").innerHTML =
             "<h2>City not found!</h2>";
-
             return;
-
         }
         const weather = data.weather[0].main;
 
