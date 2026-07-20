@@ -15,12 +15,14 @@ body{
 }
 
 .weather-box{
-    background:white;
-    width:350px;
+    width:380px;
     padding:30px;
-    border-radius:20px;
+    border-radius:25px;
+    background:rgbs(255,255,255,.18);
+    back-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.3);
     text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
 h1{
@@ -29,20 +31,21 @@ h1{
 
 input{
     width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:10px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
     outline:none;
     margin-bottom:15px;
     font-size:16px;
+    background:rgba(255,255,255,.8);
 }
 
 button{
     width:100%;
-    padding:12px;
+    padding:14px;
     border:none;
-    border-radius:10px;
-    background:#4f46e5;
+    border-radius:12px;
+    background:#2563ab;
     color:white;
     font-size:16px;
     cursor:pointer;
@@ -50,11 +53,24 @@ button{
 }
 
 button:hover{
-    background:#3730a3;
+    transform:translateY(-2px);
+    background:#1d4ed8;
+    box-shadow:0  10px   20px  rgba(37,99,235,.4);
+}
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 #weatherResult{
     margin-top:25px;
+    animation:fadeIn.5s;
 }
 
 #weatherResult h2{
@@ -90,8 +106,6 @@ body.snowy {
 body.default {
     background: linear-gradient(135deg, #74ebd5, #9face6);
 }
-const weather = data.weather[0].main;
-
 const body = document.body;
 
 body.className = "";
@@ -99,6 +113,7 @@ body.className = "";
 if (weather === "Clear") {
     body.classList.add("sunny");
 }
+const weather = data.weather[0].main;
 
 else if (weather === "Clouds") {
     body.classList.add("cloudy");
