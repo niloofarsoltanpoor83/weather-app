@@ -48,7 +48,10 @@ async function getWeather() {
         }
 
         const weather = data.weather[0].main;
+const now = new Date();
 
+document.getElementById("updateTime").innerHTML =
+`Updated: ${now.getHours()}:${now.getMinutes()}`;
         showWeatherAnimation(weather);
 
         const body = document.body;
