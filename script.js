@@ -3,8 +3,18 @@ const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
 document.getElementById("searchBtn").addEventListener("click", getWeather);
 
+document.getElementById("locationBtn").addEventListener("click", getLocationWeather);
+
 document.getElementById("cityInput").addEventListener("keydown", function(event) {
 
+    console.log("Key:", event.key);
+
+    if (event.key === "Enter") {
+        event.preventDefault();
+        getWeather();
+    }
+
+});
     console.log("Key:", event.key);
 
     if (event.key === "Enter") {
@@ -169,4 +179,37 @@ function showWeatherAnimation(weather){
         }
 
     }
+}
+function getLocationWeather(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+    }else{
+
+        alert("Geolocation is not supported by this browser.");
+
+    }
+
+}
+async function showPosition(position){
+
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    const url =
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    console.log(data);
+
+}
+function showError(error){
+
+    alert("Couldn't get your location.");
+
 }
