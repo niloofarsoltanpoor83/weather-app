@@ -18,9 +18,11 @@ document.getElementById("cityInput").addEventListener("keydown", function(event)
 
 });
 async function getWeather(){
-    const city=
-        document.getElementById("cityInput").value;
-     console.log("Button clicked");
+
+    try{
+
+        const city = document.getElementById("cityInput").value;
+
         const url =
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
@@ -32,6 +34,23 @@ async function getWeather(){
 
         console.log(data);
 
+
+        if (data.cod == "404") {
+
+            document.getElementById("weatherResult").innerHTML =
+            "<h2>City not found!</h2>";
+
+            return;
+        }
+
+
+    } catch(error){
+
+        console.log(error);
+
+    }
+
+}
         if (data.cod == "404") {
 
             document.getElementById("weatherResult").innerHTML =
