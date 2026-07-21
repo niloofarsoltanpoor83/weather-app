@@ -1,4 +1,5 @@
 console.log("Scriptloaded");
+
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
 document.getElementById("searchBtn").addEventListener("click", getWeather);
@@ -11,31 +12,13 @@ document.getElementById("cityInput").addEventListener("keydown", function(event)
 
     if (event.key === "Enter") {
         event.preventDefault();
-        getWeather();
-    }
-
-});
-    console.log("Key:", event.key);
-
-    if (event.key === "Enter") {
-        event.preventDefault();
         console.log("Enter detected");
         getWeather();
     }
 
+});
 
 console.log("Button clicked");
-
-
-async function getWeather() {
-
-    try {
-
-        const city = document.getElementById("cityInput").value;
-
-        document.getElementById("weatherResult").innerHTML =
-        "<h3>Loading...</h3>";
-
         const url =
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
