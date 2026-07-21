@@ -183,7 +183,7 @@ function showWeatherAnimation(weather){
 function getLocationWeather(){
 
     if(navigator.geolocation){
-
+console.leg("Location button clicked");
         navigator.geolocation.getCurrentPosition(showPosition, showError);
 
     }else{
