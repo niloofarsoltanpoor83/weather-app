@@ -23,8 +23,6 @@ document.getElementById("cityInput").addEventListener("keydown", function(event)
         getWeather();
     }
 
-});
-
 
 console.log("Button clicked");
 
