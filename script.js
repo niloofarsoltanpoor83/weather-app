@@ -81,19 +81,39 @@ document.getElementById("weatherResult").innerHTML = `
 
     <img src="${iconUrl}" alt="Weather Icon">
 
-    <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+  <div class="weather-info">
 
-    <p><strong>Weather:</strong> ${data.weather[0].description}</p>
+    <div class="card">
+        <h4>🌡 Temperature</h4>
+        <p>${data.main.temp} °C</p>
+    </div>
 
-    <p><strong>Feels Like:</strong> ${data.main.feels_like} °C</p>
+    <div class="card">
+        <h4>🤗 Feels Like</h4>
+        <p>${data.main.feels_like} °C</p>
+    </div>
 
-    <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+    <div class="card">
+        <h4>💧 Humidity</h4>
+        <p>${data.main.humidity}%</p>
+    </div>
 
-    <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+    <div class="card">
+        <h4>💨 Wind</h4>
+        <p>${data.wind.speed} m/s</p>
+    </div>
 
-    <p><strong>Min Temp:</strong> ${data.main.temp_min} °C</p>
+    <div class="card">
+        <h4>📉 Min</h4>
+        <p>${data.main.temp_min} °C</p>
+    </div>
 
-    <p><strong>Max Temp:</strong> ${data.main.temp_max} °C</p>
+    <div class="card">
+        <h4>📈 Max</h4>
+        <p>${data.main.temp_max} °C</p>
+    </div>
+
+</div>
 `;  
     }catch(error){
         document.getElementById("weatherResult").innerHTML =
