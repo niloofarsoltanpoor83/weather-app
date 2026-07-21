@@ -164,16 +164,20 @@ function showWeatherAnimation(weather){
 function getLocationWeather(){
 
     if(navigator.geolocation){
-console.leg("Location button clicked");
+
+        console.log("Location button clicked");
+
         navigator.geolocation.getCurrentPosition(showPosition, showError);
 
-    }else{
+    } else {
 
         alert("Geolocation is not supported by this browser.");
 
     }
 
 }
+
+
 async function showPosition(position){
 
     const lat = position.coords.latitude;
@@ -189,6 +193,8 @@ async function showPosition(position){
     console.log(data);
 
 }
+
+
 function showError(error){
 
     alert("Couldn't get your location.");
