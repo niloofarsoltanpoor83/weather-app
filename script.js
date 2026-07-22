@@ -116,7 +116,7 @@ async function getWeather() {
 
     } catch (error) {
 
-        console.log(error);
+        console.log(THIS CATCH RUN:",error);
 
         document.getElementById("weatherResult").innerHTML =
         "<h2>${error.message}</h2>";
@@ -179,7 +179,7 @@ async function getWeatherByLocation(lat, lon){
 
     }catch(error){
 
-        console.log(error);
+        console.log(THIS CATCH RUN:",error);
 
         document.getElementById("weatherResult").innerHTML =
         "<h2>Something went wrong!</h2>";
