@@ -1,5 +1,5 @@
 console.log("Scriptloaded");
-const API_KEY = "c7246f4ed11c174296162dff32c97872";
+const API_KEY = "7da03d8cd6ef91adca2869c456b9417f";
 
 document.getElementById("searchBtn").addEventListener("click", getWeather);
 
