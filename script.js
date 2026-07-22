@@ -118,9 +118,8 @@ async function getWeather() {
 
         console.log(THIS CATCH RUN:",error);
 
-        document.getElementById("weatherResult").innerHTML =
-       '<h2>${error.message}</h2>';
-
+       document.getElementById("weatherResult").innerHTML =
+`<h2>${error.message}</h2>`; 
     }
 
 }
