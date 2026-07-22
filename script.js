@@ -1,4 +1,3 @@
-console.log("Scriptloaded");
 
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
