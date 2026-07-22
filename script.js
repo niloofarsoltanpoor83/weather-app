@@ -42,21 +42,21 @@ async function getWeather(){
 
             return;
         }
-
+    }
 
     } catch(error){
 
         console.log(error);
 
-    }
+    
 
-}
+
         if (data.cod == "404") {
 
             document.getElementById("weatherResult").innerHTML =
             "<h2>City not found!</h2>";
             return;
-        }
+        }}
         const weather = data.weather[0].main;
 
         showWeatherAnimation(weather);
