@@ -1,4 +1,4 @@
-
+console.log("Scriptloaded");
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
 document.getElementById("searchBtn").addEventListener("click", getWeather);
@@ -271,13 +271,13 @@ async function showPosition(position){
             </div>
         `;
 
-    }catch(error){
+catch(error){
 
-        console.log(error);
+    console.log("ERROR:", error);
 
-        document.getElementById("weatherResult").innerHTML =
-        "<h2>Something went wrong!</h2>";
+    document.getElementById("weatherResult").innerHTML =
+    `<h2>${error}</h2>`;
 
-    }
+}
 
 }
