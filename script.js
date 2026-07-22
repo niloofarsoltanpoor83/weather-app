@@ -138,16 +138,6 @@ function getLocationWeather(){
 }
 
 
-function showPosition(position){
-
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-
-    getWeatherByLocation(lat, lon);
-
-}
-
-
 async function getWeatherByLocation(lat, lon){
 
     try{
