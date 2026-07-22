@@ -269,5 +269,16 @@ async function showPosition(position){
                 </div>
 
             </div>
-        `;
+        
+`;
+
+    } catch(error){
+
+        console.log(error);
+
+        document.getElementById("weatherResult").innerHTML =
+        "<h2>Something went wrong!</h2>";
+
+    }
+
 }
