@@ -270,8 +270,8 @@ async function showPosition(position){
 
             </div>
         `;
-
-catch(error){
+try{
+}catch(error){
 
     console.log(error);
 
