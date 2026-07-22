@@ -273,10 +273,10 @@ async function showPosition(position){
 
 catch(error){
 
-    console.log("ERROR:", error);
+    console.log(error);
 
     document.getElementById("weatherResult").innerHTML =
-    `<h2>${error}</h2>`;
+    "<h2>Something went wrong!</h2>";
 
 }
 
