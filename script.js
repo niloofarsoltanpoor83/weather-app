@@ -179,7 +179,7 @@ async function getWeatherByLocation(lat, lon){
 
     }catch(error){
 
-        console.log(THIS CATCH RUN:",error);
+        console.log("THIS CATCH RUN:",error);
 
         document.getElementById("weatherResult").innerHTML =
         "<h2>Something went wrong!</h2>";
