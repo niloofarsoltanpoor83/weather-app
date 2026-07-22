@@ -190,95 +190,48 @@ function showError(error){
     alert("Unable to get your location.");
 
 }
-async function showPosition(position){
+ async function showPosition(position){
 
-    try{
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
 
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+    const url =
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
-        const url =
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+    const response = await fetch(url);
+    const data = await response.json();
 
-        const response = await fetch(url);
-        const data = await response.json();
+    console.log(data);
 
-        console.log(data);
+    const weather = data.weather[0].main;
 
-        const weather = data.weather[0].main;
+    showWeatherAnimation(weather);
 
-        showWeatherAnimation(weather);
+    const icon = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
-        const body = document.body;
-        body.className = "";
+    document.getElementById("weatherResult").innerHTML = `
+        <h2>${data.name}</h2>
+        <img src="${iconUrl}" alt="Weather Icon">
 
-        if (weather === "Clear") {
-            body.classList.add("sunny");
-        }
-        else if (weather === "Clouds") {
-            body.classList.add("cloudy");
-        }
-        else if (weather === "Rain" || weather === "Drizzle") {
-            body.classList.add("rainy");
-        }
-        else if (weather === "Snow") {
-            body.classList.add("snowy");
-        }
-        else {
-            body.classList.add("default");
-        }
+        <div class="weather-info">
 
-        const icon = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-        document.getElementById("weatherResult").innerHTML = `
-            <h2>${data.name}</h2>
-
-            <img src="${iconUrl}" alt="Weather Icon">
-
-            <div class="weather-info">
-
-                <div class="card">
-                    <h4>🌡️ Temperature</h4>
-                    <p>${data.main.temp} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>🤗 Feels Like</h4>
-                    <p>${data.main.feels_like} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>💧 Humidity</h4>
-                    <p>${data.main.humidity}%</p>
-                </div>
-
-                <div class="card">
-                    <h4>💨 Wind</h4>
-                    <p>${data.wind.speed} m/s</p>
-                </div>
-
-                <div class="card">
-                    <h4>📉 Min</h4>
-                    <p>${data.main.temp_min} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>📈 Max</h4>
-                    <p>${data.main.temp_max} °C</p>
-                </div>
-
+            <div class="card">
+                <h4>🌡️ Temperature</h4>
+                <p>${data.main.temp} °C</p>
             </div>
-        
-`;
 
-    } catch(error){
+            <div class="card">
+                <h4>💧 Humidity</h4>
+                <p>${data.main.humidity}%</p>
+            </div>
 
-        console.log(error);
+            <div class="card">
+                <h4>💨 Wind</h4>
+                <p>${data.wind.speed} m/s</p>
+            </div>
 
-        document.getElementById("weatherResult").innerHTML =
-        "<h2>Something went wrong!</h2>";
-
-    }
+        </div>
+    `;
 
 }
