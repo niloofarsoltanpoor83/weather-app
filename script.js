@@ -1,127 +1,106 @@
-console.log("Scriptloaded");
+console.log("Script Loaded!");
+
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
 
-document.getElementById("searchBtn").addEventListener("click", getWeather);
+const cityInput = document.getElementById("cityInput");
+const searchBtn = document.getElementById("searchBtn");
+const locationBtn = document.getElementById("locationBtn");
+const weatherResult = document.getElementById("weatherResult");
+const updateTime = document.getElementById("updateTime");
+const body = document.body;
 
-document.getElementById("locationBtn").addEventListener("click", getLocationWeather);
+searchBtn.addEventListener("click", getWeather);
 
-document.getElementById("cityInput").addEventListener("keydown", function(event) {
+locationBtn.addEventListener("click", getLocationWeather);
 
-    console.log("Key:", event.key);
-
+cityInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-        event.preventDefault();
-        console.log("Enter detected");
         getWeather();
     }
-
 });
+
 async function getWeather() {
+
+    const city = cityInput.value.trim();
+
+    if (city === "") {
+        weatherResult.innerHTML = "<h2>Please enter a city.</h2>";
+        return;
+    }
+
+    weatherResult.innerHTML = "<h2>Loading...</h2>";
 
     try {
 
-        const city = document.getElementById("cityInput").value.trim();
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        );
 
-        if (city === "") {
-            alert("Please enter a city name.");
-            return;
+        if (!response.ok) {
+            throw new Error("City not found");
         }
 
-        const url =
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        const data = await response.json();
 
-        const response = await fetch(url);
-        console.log("Status:",
-         response.status);
-        const data = await
-            response.json();
+        displayWeather(data);
 
-        console.log(data);
-        
+    } catch (error) {
 
-        if (data.cod == "404") {
+        console.log(error);
 
-            document.getElementById("weatherResult").innerHTML =
-            "<h2>City not found!</h2>";
+        weatherResult.innerHTML =
+            "<h2>City not found.</h2>";
 
-            return;
-        }
-
-        const weather = data.weather[0].main;
-
-        showWeatherAnimation(weather);
-
-        const body = document.body;
-
-        body.className = "";
-
-        if (weather === "Clear") {
-            body.classList.add("sunny");
-        }
-        else if (weather === "Clouds") {
-            body.classList.add("cloudy");
-        }
-        else if (weather === "Rain" || weather === "Drizzle") {
-            body.classList.add("rainy");
-        }
-        else if (weather === "Snow") {
-            body.classList.add("snowy");
-        }
-        else {
-            body.classList.add("default");
-        }
-
-        const icon = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-        document.getElementById("weatherResult").innerHTML = `
-            <h2>${data.name}</h2>
-
-            <img src="${iconUrl}" alt="Weather Icon">
-
-            <div class="weather-info">
-
-                <div class="card">
-                    <h4>🌡️ Temperature</h4>
-                    <p>${data.main.temp} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>🤗 Feels Like</h4>
-                    <p>${data.main.feels_like} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>💧 Humidity</h4>
-                    <p>${data.main.humidity}%</p>
-                </div>
-
-                <div class="card">
-                    <h4>💨 Wind</h4>
-                    <p>${data.wind.speed} m/s</p>
-                </div>
-
-                <div class="card">
-                    <h4>📉 Min</h4>
-                    <p>${data.main.temp_min} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>📈 Max</h4>
-                    <p>${data.main.temp_max} °C</p>
-                </div>
-
-            </div>
-        `;
-
-   } catch (error) {
-
-    console.log("THIS CATCH RUN:", error);
-
-    document.getElementById("weatherResult").innerHTML =
-    `<h2>${error.message}</h2>`;
+    }
 
 }
+
+function getLocationWeather() {
+
+    if (!navigator.geolocation) {
+
+        alert("Geolocation is not supported.");
+
+        return;
+
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        showPosition,
+        showError
+    );
+
+}
+
+async function showPosition(position) {
+
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        );
+
+        const data = await response.json();
+
+        displayWeather(data);
+
+    } catch (error) {
+
+        console.log(error);
+
+        weatherResult.innerHTML =
+            "<h2>Something went wrong!</h2>";
+
+    }
+
+}
+
+function showError(error) {
+
+    alert("Unable to get your location.");
 
 }
 function getLocationWeather(){
@@ -192,6 +171,190 @@ async function getWeatherByLocation(lat, lon){
 function showError(error){
 
     alert("Unable to get your location.");
+
+}
+function displayWeather(data) {
+
+    const weather = data.weather[0].main;
+    const icon = data.weather[0].icon;
+
+    const iconUrl =
+        `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+    changeBackground(weather);
+
+    showWeatherAnimation(weather);
+
+    const now = new Date();
+
+    updateTime.innerHTML =
+        "Updated: " +
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+    weatherResult.innerHTML = `
+
+        <h2>${data.name}</h2>
+
+        <img src="${iconUrl}" alt="Weather Icon">
+
+        <div class="weather-info">
+
+            <div class="card">
+                <h4>🌡️ Temperature</h4>
+                <p>${Math.round(data.main.temp)} °C</p>
+            </div>
+
+            <div class="card">
+                <h4>🤗 Feels Like</h4>
+                <p>${Math.round(data.main.feels_like)} °C</p>
+            </div>
+
+            <div class="card">
+                <h4>💧 Humidity</h4>
+                <p>${data.main.humidity}%</p>
+            </div>
+
+            <div class="card">
+                <h4>💨 Wind</h4>
+                <p>${data.wind.speed} m/s</p>
+            </div>
+
+            <div class="card">
+                <h4>🌡️ Min Temp</h4>
+                <p>${Math.round(data.main.temp_min)} °C</p>
+            </div>
+
+            <div class="card">
+                <h4>📈 Max Temp</h4>
+                <p>${Math.round(data.main.temp_max)} °C</p>
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function changeBackground(weather) {
+
+    body.className = "";
+
+    if (weather === "Clear") {
+
+        body.classList.add("sunny");
+
+    }
+
+    else if (weather === "Clouds") {
+
+        body.classList.add("cloudy");
+
+    }
+
+    else if (
+
+        weather === "Rain" ||
+        weather === "Drizzle" ||
+        weather === "Thunderstorm"
+
+    ) {
+
+        body.classList.add("rainy");
+
+    }
+
+    else if (weather === "Snow") {
+
+        body.classList.add("snowy");
+
+    }
+
+    else {
+
+        body.classList.add("default");
+
+    }
+
+}
+function showWeatherAnimation(weather) {
+
+    const animation = document.getElementById("weatherAnimation");
+
+    animation.innerHTML = "";
+
+    if (weather === "Clear") {
+
+        animation.innerHTML = `
+            <div class="sun"></div>
+        `;
+
+    }
+
+    else if (weather === "Clouds") {
+
+        animation.innerHTML = `
+            <div class="cloud"></div>
+        `;
+
+    }
+
+    else if (
+        weather === "Rain" ||
+        weather === "Drizzle" ||
+        weather === "Thunderstorm"
+    ) {
+
+        for (let i = 0; i < 120; i++) {
+
+            const drop = document.createElement("div");
+
+            drop.className = "drop";
+
+            drop.style.left = Math.random() * window.innerWidth + "px";
+
+            drop.style.animationDelay = Math.random() * 2 + "s";
+
+            drop.style.animationDuration =
+                (0.6 + Math.random() * 0.5) + "s";
+
+            animation.appendChild(drop);
+
+        }
+
+    }
+
+    else if (weather === "Snow") {
+
+        for (let i = 0; i < 80; i++) {
+
+            const snow = document.createElement("div");
+
+            snow.innerHTML = "❄";
+
+            snow.style.position = "absolute";
+
+            snow.style.left = Math.random() * window.innerWidth + "px";
+
+            snow.style.top = "-20px";
+
+            snow.style.fontSize =
+                (10 + Math.random() * 15) + "px";
+
+            snow.style.opacity = Math.random();
+
+            snow.style.animation = `snowFall ${4 + Math.random() * 4}s linear infinite`;
+
+            snow.style.animationDelay =
+                Math.random() * 4 + "s";
+
+            animation.appendChild(snow);
+
+        }
+
+    }
 
 }
  async function showPosition(position){
