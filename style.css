@@ -106,18 +106,6 @@ body.snowy {
 body.default {
     background: linear-gradient(135deg, #74ebd5, #9face6);
 }
-const body = document.body;
-
-body.className = "";
-
-if (weather === "Clear") {
-    body.classList.add("sunny");
-}
-const weather = data.weather[0].main;
-
-else if (weather === "Clouds") {
-    body.classList.add("cloudy");
-}
 
 else if (weather === "Rain" || weather === "Drizzle") {
     body.classList.add("rainy");
