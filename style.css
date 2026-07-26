@@ -260,3 +260,55 @@ body.snowy{
     }
 
 }
+#forecastContainer{
+    margin-top:25px;
+}
+
+#forecastContainer h2{
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+#forecast{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+    gap:15px;
+}
+
+.forecast-card{
+
+    background:rgba(255,255,255,.2);
+    backdrop-filter:blur(10px);
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.forecast-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.forecast-card img{
+
+    width:60px;
+    height:60px;
+
+}
+
+.forecast-card h4{
+
+    margin-bottom:8px;
+    font-size:16px;
+
+}
+
+.forecast-card p{
+
+    margin:4px 0;
+    font-size:15px;
+
+}
