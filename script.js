@@ -43,13 +43,38 @@ async function getWeather() {
         const data = await response.json();
 
         displayWeather(data);
-
+        fetchForecast(city);
     } catch (error) {
 
         console.log(error);
 
         weatherResult.innerHTML =
             "<h2>City not found.</h2>";
+
+    }
+
+}
+async function fetchForecast(city){
+
+    try{
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+        );
+
+        if(!response.ok){
+
+            throw new Error("Forecast not found");
+
+        }
+
+        const data = await response.json();
+
+        displayForecast(data);
+
+    }catch(error){
+
+        console.log(error);
 
     }
 
@@ -86,7 +111,7 @@ async function showPosition(position) {
         const data = await response.json();
 
         displayWeather(data);
-
+       fetchForecast(data.name);
     } catch (error) {
 
         console.log(error);
