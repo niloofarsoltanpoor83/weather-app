@@ -79,7 +79,56 @@ async function fetchForecast(city){
     }
 
 }
+function displayForecast(data) {
 
+    const forecastContainer = document.getElementById("forecast");
+
+    forecastContainer.innerHTML = "";
+
+    const dailyForecast = [];
+
+    data.list.forEach(item => {
+
+        if (item.dt_txt.includes("12:00:00")) {
+
+            dailyForecast.push(item);
+
+        }
+
+    });
+
+    dailyForecast.forEach(day => {
+
+        const date = new Date(day.dt_txt);
+
+        const dayName = date.toLocaleDateString("en-US", {
+            weekday: "short"
+        });
+
+        const icon = day.weather[0].icon;
+
+        const iconUrl =
+            `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+        forecastContainer.innerHTML += `
+
+            <div class="forecast-card">
+
+                <h4>${dayName}</h4>
+
+                <img src="${iconUrl}" alt="Weather Icon">
+
+                <p>${Math.round(day.main.temp)} °C</p>
+
+                <p>${day.weather[0].description}</p>
+
+            </div>
+
+        `;
+
+    });
+
+}
 function getLocationWeather() {
 
     if (!navigator.geolocation) {
