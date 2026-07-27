@@ -101,12 +101,14 @@ function displayForecast(data) {
 
         const date = new Date(day.dt_txt);
 
-        const fullDate = date.toLocaleDateString("en-US", {
-            weekday:"long",
-            day:"numeric",
-            month:"short"
-        });
+      const weekDay = date.toLocaleDateString("en-US", {
+    weekday: "long"
+});
 
+const monthDay = date.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short"
+});
         const icon = day.weather[0].icon;
 
         const iconUrl =
@@ -118,7 +120,8 @@ function displayForecast(data) {
             <div class="forecast-card">
 
                 <h4>${fullDate}</h4>
-
+                <P CLASS="FORECAST-DATE">$
+                {monthDay}</p>
                 <img src="${iconUrl}" alt="Weather Icon">
 
                 <p>${Math.round(day.main.temp)} °C</p>
