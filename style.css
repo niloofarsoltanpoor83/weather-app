@@ -313,3 +313,8 @@ body.snowy{
     font-size:15px;
 
 }
+.forecast-date{
+    font-size:13px;
+    color:#666;
+    margin-bottom:10px;
+}
