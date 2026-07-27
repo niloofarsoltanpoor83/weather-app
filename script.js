@@ -101,8 +101,10 @@ function displayForecast(data) {
 
         const date = new Date(day.dt_txt);
 
-        const dayName = date.toLocaleDateString("en-US", {
-            weekday: "short"
+        const fullDate = date.toLocaleDateString("en-US", {
+            weekday:"long",
+            day:"numeric",
+            month:"short"
         });
 
         const icon = day.weather[0].icon;
