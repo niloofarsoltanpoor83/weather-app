@@ -10,8 +10,9 @@ body{
     transition:background 0.8s ease;
     display:flex;
     justify-content:center;
-    align-items:center;
-    height:100vh;
+    align-items:fix-start;
+   min-height:100vh;
+    padding:40xp 0;
 }
 
 .weather-box{
