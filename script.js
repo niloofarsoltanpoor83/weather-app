@@ -111,19 +111,20 @@ function displayForecast(data) {
 
         const iconUrl =
             `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
+        const rainChance=
+            Math.round((day.pop || 0)*100);
         forecastContainer.innerHTML += `
 
             <div class="forecast-card">
 
-                <h4>${dayName}</h4>
+                <h4>${fullDate}</h4>
 
                 <img src="${iconUrl}" alt="Weather Icon">
 
                 <p>${Math.round(day.main.temp)} °C</p>
 
                 <p>${day.weather[0].description}</p>
-
+                 <p>${rainChance}%</p>
             </div>
 
         `;
