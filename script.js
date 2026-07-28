@@ -276,7 +276,7 @@ function displayWeather(data) {
 
     weatherResult.innerHTML = `
 
-        <h2>${data.name}, $ {data.sys.country}</h2>
+       <h2>${data.name}, ${data.sys.country}</h2>
        <p id="localTime"
        class="local-time"></p>
         <img src="${iconUrl}" alt="Weather Icon">
