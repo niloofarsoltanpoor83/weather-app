@@ -253,6 +253,14 @@ function showError(error){
     alert("Unable to get your location.");
 
 }
+function formatTime(timestamp){
+
+    return new Date(timestamp * 1000).toLocaleTimeString("en-US",{
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+
+}
 function displayWeather(data) {
 
     const weather = data.weather[0].main;
@@ -273,7 +281,9 @@ function displayWeather(data) {
             hour: "2-digit",
             minute: "2-digit"
         });
+const sunrise = formatTime(data.sys.sunrise);
 
+const sunset = formatTime(data.sys.sunset);
     weatherResult.innerHTML = `
 
        <h2>${data.name}, ${data.sys.country}</h2>
@@ -494,20 +504,26 @@ function showWeatherAnimation(weather) {
         <img src="${iconUrl}" alt="Weather Icon">
 
         <div class="weather-info">
+<div class="card">
+    <h4>🌅 Sunrise</h4>
+    <p>${sunrise}</p>
+</div>
 
-            <div class="card">
-                <h4>🌡️ Temperature</h4>
-                <p>${data.main.temp} °C</p>
-            </div>
-
-            <div class="card">
-                <h4>💧 Humidity</h4>
-                <p>${data.main.humidity}%</p>
-            </div>
-
-            <div class="card">
-                <h4>💨 Wind</h4>
-                <p>${data.wind.speed} m/s</p>
+<div class="card">
+    <h4>🌇 Sunset</h4>
+    <p>${sunset}</p>
+</div>
+<div class="card">
+<h4>🌡️ Temperature</h4>
+<p>${data.main.temp} °C</p>
+  </div>
+ <div class="card">
+ <h4>💧 Humidity</h4>
+ <p>${data.main.humidity}%</p>
+ </div>
+  <div class="card">
+<h4>💨 Wind</h4>
+ <p>${data.wind.speed} m/s</p>
             </div>
 
         </div>
