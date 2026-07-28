@@ -276,8 +276,7 @@ function displayWeather(data) {
 
     weatherResult.innerHTML = `
 
-        <h2>${data.name},$
-       {data.sys.country}</h2>
+        <h2>${data.name}, $ {data.sys.country}</h2>
        <p id="localTime"
        class="local-time"></p>
         <img src="${iconUrl}" alt="Weather Icon">
@@ -312,13 +311,13 @@ function displayWeather(data) {
             <div class="card">
                 <h4>📈 Max Temp</h4>
                 <p>${Math.round(data.main.temp_max)} °C</p>
-                updateLocalTime(data.timezone);
+                
             </div>
 
         </div>
 
     `;
-
+updateLocalTime(data.timezone);
 }
 let clockInterval;
 
