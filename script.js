@@ -119,8 +119,8 @@ const monthDay = date.toLocaleDateString("en-US", {
 
             <div class="forecast-card">
 
-                <h4>${fullDate}</h4>
-                <P CLASS="FORECAST-DATE">$
+                <h4>${weekDay}</h4>
+                <P class="forecast-date">$
                 {monthDay}</p>
                 <img src="${iconUrl}" alt="Weather Icon">
 
