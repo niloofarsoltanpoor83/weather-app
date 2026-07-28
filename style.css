@@ -318,3 +318,10 @@ body.snowy{
     color:#666;
     margin-bottom:10px;
 }
+.local-time{
+    margin-top:8px;
+    margin-bottom:15px;
+    font-size:15px;
+    font-weight:bold;
+    color:#444;
+}
