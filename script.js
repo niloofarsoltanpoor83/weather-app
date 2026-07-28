@@ -276,8 +276,10 @@ function displayWeather(data) {
 
     weatherResult.innerHTML = `
 
-        <h2>${data.name}</h2>
-
+        <h2>${data.name},$
+       {data.sys.country}</h2>
+       <p id="localTime"
+       class="local-time"></p>
         <img src="${iconUrl}" alt="Weather Icon">
 
         <div class="weather-info">
@@ -310,6 +312,7 @@ function displayWeather(data) {
             <div class="card">
                 <h4>📈 Max Temp</h4>
                 <p>${Math.round(data.main.temp_max)} °C</p>
+                updateLocalTime(data.timezone);
             </div>
 
         </div>
@@ -317,7 +320,37 @@ function displayWeather(data) {
     `;
 
 }
+let clockInterval;
 
+function updateLocalTime(timezone) {
+
+    clearInterval(clockInterval);
+
+    const timeElement = document.getElementById("localTime");
+
+    function refresh() {
+
+        const now = new Date();
+
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+
+        const cityTime = new Date(utc + timezone * 1000);
+
+        timeElement.textContent =
+            "🕒 " +
+            cityTime.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+
+    }
+
+    refresh();
+
+    clockInterval = setInterval(refresh, 1000);
+
+}
 function changeBackground(weather) {
 
     body.className = "";
