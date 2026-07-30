@@ -215,7 +215,15 @@ async function getWeatherByLocation(lat, lon){
             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
 
             <div class="weather-info">
+<div class="card">
+    <h4>🌅 Sunrise</h4>
+    <p>${sunrise}</p>
+</div>
 
+<div class="card">
+    <h4>🌇 Sunset</h4>
+    <p>${sunset}</p>
+</div>
                 <div class="card">
                     <h4>🌡️ Temperature</h4>
                     <p>${data.main.temp} °C</p>
@@ -504,15 +512,7 @@ function showWeatherAnimation(weather) {
         <img src="${iconUrl}" alt="Weather Icon">
 
         <div class="weather-info">
-<div class="card">
-    <h4>🌅 Sunrise</h4>
-    <p>${sunrise}</p>
-</div>
 
-<div class="card">
-    <h4>🌇 Sunset</h4>
-    <p>${sunset}</p>
-</div>
 <div class="card">
 <h4>🌡️ Temperature</h4>
 <p>${data.main.temp} °C</p>
