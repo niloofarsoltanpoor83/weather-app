@@ -120,7 +120,7 @@ const monthDay = date.toLocaleDateString("en-US", {
             <div class="forecast-card">
 
                 <h4>${weekDay}</h4>
-                <P class="forecast-date">$
+                <p class="forecast-date">$
                 {monthDay}</p>
                 <img src="${iconUrl}" alt="Weather Icon">
 
@@ -214,16 +214,6 @@ async function getWeatherByLocation(lat, lon){
             <h2>${data.name}</h2>
             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
 
-            <div class="weather-info">
-<div class="card">
-    <h4>🌅 Sunrise</h4>
-    <p>${sunrise}</p>
-</div>
-
-<div class="card">
-    <h4>🌇 Sunset</h4>
-    <p>${sunset}</p>
-</div>
                 <div class="card">
                     <h4>🌡️ Temperature</h4>
                     <p>${data.main.temp} °C</p>
@@ -524,6 +514,16 @@ function showWeatherAnimation(weather) {
   <div class="card">
 <h4>💨 Wind</h4>
  <p>${data.wind.speed} m/s</p>
+ <div class="weather-info">
+<div class="card">
+    <h4>🌅 Sunrise</h4>
+    <p>${sunrise}</p>
+</div>
+
+<div class="card">
+    <h4>🌇 Sunset</h4>
+    <p>${sunset}</p>
+</div>
             </div>
 
         </div>
