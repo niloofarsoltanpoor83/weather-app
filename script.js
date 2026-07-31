@@ -315,16 +315,25 @@ const sunset = formatTime(data.sys.sunset);
                 <h4>🌡️ Min Temp</h4>
                 <p>${Math.round(data.main.temp_min)} °C</p>
             </div>
+<div class="card">
+    <h4>📈 Max Temp</h4>
+    <p>${Math.round(data.main.temp_max)} °C</p>
+</div>
 
-            <div class="card">
-                <h4>📈 Max Temp</h4>
-                <p>${Math.round(data.main.temp_max)} °C</p>
-                
-            </div>
+<div class="card">
+    <h4>🌅 Sunrise</h4>
+    <p>${sunrise}</p>
+</div>
 
-        </div>
+<div class="card">
+    <h4>🌇 Sunset</h4>
+    <p>${sunset}</p>
+</div>
 
-    `;
+</div>
+
+`;
+            
 updateLocalTime(data.timezone);
 }
 let clockInterval;
