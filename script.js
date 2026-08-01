@@ -259,6 +259,24 @@ function formatTime(timestamp){
     });
 
 }
+function getWindDirection(deg){
+
+    const directions = [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+    ];
+
+    const index = Math.round(deg / 45) % 8;
+
+    return directions[index];
+
+}
 function displayWeather(data) {
 
     const weather = data.weather[0].main;
@@ -282,6 +300,7 @@ function displayWeather(data) {
 const sunrise = formatTime(data.sys.sunrise);
 
 const sunset = formatTime(data.sys.sunset);
+const windDirection = getWindDirection(data.wind.deg);
     weatherResult.innerHTML = `
 
        <h2>${data.name}, ${data.sys.country}</h2>
@@ -338,7 +357,10 @@ const sunset = formatTime(data.sys.sunset);
     <h4>👁️ Visibility</h4>
     <p>${data.visibility / 1000} km</p>
 </div>
-
+<div class="card">
+    <h4>🧭 Wind Direction</h4>
+    <p>${windDirection}</p>
+</div>
 `;
             
 updateLocalTime(data.timezone);
