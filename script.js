@@ -389,11 +389,12 @@ const windDirection = getWindDirection(data.wind.deg);
 `;
             
 updateLocalTime(data.timezone);
-}
-fetchAirQuality(
+    fetchAirQuality(
     data.coord.lat,
     data.coord.lon
 );
+}
+
 let clockInterval;
 
 function updateLocalTime(timezone) {
