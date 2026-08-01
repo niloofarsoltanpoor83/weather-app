@@ -329,7 +329,23 @@ const sunset = formatTime(data.sys.sunset);
     <h4>🌇 Sunset</h4>
     <p>${sunset}</p>
 </div>
+<div class="card">
+    <h4>🌡️ Pressure</h4>
+    <p>${data.main.pressure} hPa</p>
+</div>
 
+<div class="card">
+    <h4>👁️ Visibility</h4>
+    <p>${data.visibility / 1000} km</p>
+</div>
+<div class="card">
+    <h4>🌡️ Pressure</h4>
+    <p>${data.main.pressure} hPa</p>
+</div>
+
+<div class="card">
+    <h4>👁️ Visibility</h4>
+    <p>${data.visibility / 1000} km</p>
 </div>
 
 `;
