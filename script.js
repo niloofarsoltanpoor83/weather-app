@@ -600,6 +600,13 @@ function showWeatherAnimation(weather) {
 }
 function displayAirQuality(data){
 
+    const oldAirQuality = document.getElementById("airQuality");
+
+    if(oldAirQuality){
+        oldAirQuality.remove();
+    }
+function displayAirQuality(data){
+
     const air = data.list[0];
 
     const aqi = air.main.aqi;
@@ -623,23 +630,26 @@ function displayAirQuality(data){
     }
 
 
-    weatherResult.innerHTML += `
+  weatherResult.innerHTML += `
 
-        <div class="card">
-            <h4>🌱 Air Quality</h4>
-            <p>${quality}</p>
-        </div>
+<div id="airQuality">
 
-        <div class="card">
-            <h4>PM2.5</h4>
-            <p>${air.components.pm2_5} μg/m³</p>
-        </div>
+    <div class="card">
+        <h4>🌱 Air Quality</h4>
+        <p>${quality}</p>
+    </div>
 
-        <div class="card">
-            <h4>PM10</h4>
-            <p>${air.components.pm10} μg/m³</p>
-        </div>
+    <div class="card">
+        <h4>PM2.5</h4>
+        <p>${air.components.pm2_5} μg/m³</p>
+    </div>
 
-    `;
+    <div class="card">
+        <h4>PM10</h4>
+        <p>${air.components.pm10} μg/m³</p>
+    </div>
 
+</div>
+
+`;
 }
