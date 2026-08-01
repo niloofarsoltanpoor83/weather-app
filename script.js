@@ -79,6 +79,31 @@ async function fetchForecast(city){
     }
 
 }
+async function fetchAirQuality(lat, lon) {
+
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+        );
+
+        if(!response.ok){
+
+            throw new Error("Air quality not found");
+
+        }
+
+        const data = await response.json();
+
+        displayAirQuality(data);
+
+    } catch(error){
+
+        console.log(error);
+
+    }
+
+}
 function displayForecast(data) {
 
     const forecastContainer = document.getElementById("forecast");
@@ -365,6 +390,10 @@ const windDirection = getWindDirection(data.wind.deg);
             
 updateLocalTime(data.timezone);
 }
+fetchAirQuality(
+    data.coord.lat,
+    data.coord.lon
+);
 let clockInterval;
 
 function updateLocalTime(timezone) {
@@ -565,6 +594,51 @@ function showWeatherAnimation(weather) {
             </div>
 
         </div>
+    `;
+
+}
+function displayAirQuality(data){
+
+    const air = data.list[0];
+
+    const aqi = air.main.aqi;
+
+    let quality;
+
+    if(aqi === 1){
+        quality = "Good 😊";
+    }
+    else if(aqi === 2){
+        quality = "Fair 🙂";
+    }
+    else if(aqi === 3){
+        quality = "Moderate 😐";
+    }
+    else if(aqi === 4){
+        quality = "Poor 😷";
+    }
+    else {
+        quality = "Very Poor ☠️";
+    }
+
+
+    weatherResult.innerHTML += `
+
+        <div class="card">
+            <h4>🌱 Air Quality</h4>
+            <p>${quality}</p>
+        </div>
+
+        <div class="card">
+            <h4>PM2.5</h4>
+            <p>${air.components.pm2_5} μg/m³</p>
+        </div>
+
+        <div class="card">
+            <h4>PM10</h4>
+            <p>${air.components.pm10} μg/m³</p>
+        </div>
+
     `;
 
 }
