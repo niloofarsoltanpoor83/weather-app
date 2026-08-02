@@ -10,9 +10,9 @@ body{
     transition:background 0.8s ease;
     display:flex;
     justify-content:center;
-    align-items:fix-start;
+    align-items:flex-start;
    min-height:100vh;
-    padding:40xp 0;
+    padding:40px 0;
 }
 
 .weather-box{
@@ -87,38 +87,7 @@ button:hover{
     height:90px;
     display:block;
     margin:10px auto;
-}
-body.sunny {
-    background: linear-gradient(135deg, #fceabb, #f8b500);
-}
 
-body.cloudy {
-    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
-}
-
-body.rainy {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-}
-
-body.snowy {
-    background: linear-gradient(135deg, #e6dada, #274046);
-}
-
-body.default {
-    background: linear-gradient(135deg, #74ebd5, #9face6);
-}
-
-else if (weather === "Rain" || weather === "Drizzle") {
-    body.classList.add("rainy");
-}
-
-else if (weather === "Snow") {
-    body.classList.add("snowy");
-}
-
-else {
-    body.classList.add("default");
-}
 #weatherAnimation{
     position: fixed;
     top:0;
@@ -239,15 +208,7 @@ body.snowy{
     box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
-.card h4{
-    margin-bottom:8px;
-    font-size:15px;
-}
 
-.card p{
-    font-size:18px;
-    font-weight:bold;
-}
 @keyframes snowFall{
 
     from{
@@ -335,11 +296,7 @@ body.snowy{
     font-weight:bold;
 }
 
-.local-time{
-    margin:10px 0;
-    color:#555;
-    font-weight:bold;
-}
+
 .hourly-container{
     display:flex;
     gap:15px;
@@ -354,4 +311,37 @@ body.snowy{
     border-radius:15px;
     text-align:center;
     background:rgba(255,255,255,0.4);
+}
+@media(max-width:600px){
+
+    body{
+        padding:20px 0;
+        align-items:flex-start;
+    }
+
+    .weather-box{
+        width:92%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    .weather-info{
+        grid-template-columns:1fr;
+    }
+
+    #forecast{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .forecast-card{
+        padding:12px;
+    }
+
+    .hour-card{
+        min-width:100px;
+    }
+
 }
