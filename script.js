@@ -71,7 +71,7 @@ async function fetchForecast(city){
         const data = await response.json();
 
         displayForecast(data);
-
+        displayHourlyForecast(data);
     }catch(error){
 
         console.log(error);
@@ -632,5 +632,43 @@ function displayAirQuality(data){
     </div>
 
     `;
+
+}
+function displayHourlyForecast(data){
+
+    const hourlyContainer = document.getElementById("hourlyForecast");
+
+    hourlyContainer.innerHTML = "";
+
+    const hourlyData = data.list.slice(0, 8);
+
+    hourlyData.forEach(hour => {
+
+        const time = new Date(hour.dt_txt);
+
+        const hourText = time.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+        const icon = hour.weather[0].icon;
+
+        hourlyContainer.innerHTML += `
+
+        <div class="hour-card">
+
+            <h4>${hourText}</h4>
+
+            <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
+
+            <p>${Math.round(hour.main.temp)} °C</p>
+
+            <p>${hour.weather[0].description}</p>
+
+        </div>
+
+        `;
+
+    });
 
 }
