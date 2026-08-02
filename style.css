@@ -201,11 +201,18 @@ body.snowy{
 }
 
 .card{
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(10px);
-    border-radius:15px;
-    padding:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    background:rgba(255,255,255,.25);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:20px;
+    padding:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    transition:.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
 
@@ -237,23 +244,21 @@ body.snowy{
     gap:15px;
 }
 
+
 .forecast-card{
-
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(10px);
-    border-radius:15px;
-    padding:15px;
+    background:rgba(255,255,255,.25);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:20px;
+    padding:18px;
     text-align:center;
-    transition:.3s;
-
+    transition:.3s ease;
 }
 
 .forecast-card:hover{
-
-    transform:translateY(-5px);
-
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.18);
 }
-
 .forecast-card img{
 
     width:60px;
