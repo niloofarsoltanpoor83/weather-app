@@ -181,7 +181,9 @@ async function showPosition(position) {
 
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-
+weatherResult.innerHTML = `
+    <h2>Loading weather data... ⏳</h2>
+`;
     try {
 
         const response = await fetch(
