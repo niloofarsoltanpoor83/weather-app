@@ -148,8 +148,7 @@ const monthDay = date.toLocaleDateString("en-US", {
                 <p class="forecast-date">$
                 {monthDay}</p>
                 <img src="${iconUrl}" alt="Weather Icon">
-
-                <p>${Math.round(day.main.temp)} °C</p>
+                 <p class="main-temperature">${Math.round(day.main.temp)} °C</p>
 
                 <p>${day.weather[0].description}</p>
                  <p>${rainChance}%</p>
