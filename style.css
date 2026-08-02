@@ -75,7 +75,8 @@ button:hover{
 }
 
 #weatherResult h2{
-    margin-bottom:15px;
+    font-size:28px
+    margin-bottom:10px;
 }
 
 #weatherResult p{
@@ -83,10 +84,10 @@ button:hover{
     font-size:17px;
 }
 #weatherResult img{
-    width:90px;
-    height:90px;
+    width:120px;
+    height:120px;
     display:block;
-    margin:10px auto;
+    margin:15px auto;
 
 #weatherAnimation{
     position: fixed;
@@ -349,4 +350,10 @@ body.snowy{
         min-width:100px;
     }
 
+}
+.main-temperature{
+    font-size:48px !important;
+    font-weight:bold;
+    margin:15px 0;
+    letter-spacing:1px;
 }
