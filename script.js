@@ -203,27 +203,6 @@ async function showPosition(position) {
 
 }
 
-function showError(error) {
-
-    alert("Unable to get your location.");
-
-}
-function getLocationWeather(){
-
-    if(navigator.geolocation){
-
-        console.log("Location button clicked");
-
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-
-    }else{
-
-        alert("Geolocation is not supported by this browser.");
-
-    }
-
-}
-
 
 async function getWeatherByLocation(lat, lon){
 
