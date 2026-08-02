@@ -340,3 +340,18 @@ body.snowy{
     color:#555;
     font-weight:bold;
 }
+.hourly-container{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+    padding:10px;
+}
+
+
+.hour-card{
+    min-width:120px;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    background:rgba(255,255,255,0.4);
+}
