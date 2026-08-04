@@ -364,3 +364,35 @@ body.snowy{
     margin:15px 0;
     letter-spacing:1px;
 }
+body.dark{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+body.dark .weather-box{
+    background:rgba(15,23,42,.55);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+body.dark .card,
+body.dark .forecast-card,
+body.dark .hour-card{
+    background:rgba(30,41,59,.7);
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+body.dark input{
+    background:#334155;
+    color:white;
+}
+
+body.dark input::placeholder{
+    color:#cbd5e1;
+}
+
+body.dark .local-time,
+body.dark .forecast-date,
+body.dark .weather-description{
+    color:#e2e8f0;
+}
