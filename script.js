@@ -1,7 +1,9 @@
 console.log("Script version2");
 
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
-
+// Favorite Cities
+let favoriteCities =
+JSON.parse(localStorage.getItem("favoriteCities")) || [];
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
 const locationBtn = document.getElementById("locationBtn");
@@ -592,3 +594,75 @@ themeBtn.addEventListener("click", () => {
     }
 
 });
+function saveFavorites() {
+    localStorage.setItem(
+        "favoriteCities",
+        JSON.stringify(favoriteCities)
+    );
+}
+
+function addFavorite(city) {
+
+    city = city.trim();
+
+    if (!city) return;
+
+    if (!favoriteCities.includes(city)) {
+
+        favoriteCities.push(city);
+
+        saveFavorites();
+
+        renderFavorites();
+
+    }
+
+}
+
+function removeFavorite(city){
+
+    favoriteCities =
+    favoriteCities.filter(item => item !== city);
+
+    saveFavorites();
+
+    renderFavorites();
+
+}
+function renderFavorites(){
+
+    const container =
+    document.getElementById("favoriteCities");
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    favoriteCities.forEach(city => {
+
+        const item =
+        document.createElement("div");
+
+        item.className = "favorite-city";
+
+        item.innerHTML = `
+            <span>${city}</span>
+            <button onclick="removeFavorite('${city}')">
+                ❌
+            </button>
+        `;
+
+        item.querySelector("span")
+        .addEventListener("click", () => {
+
+            cityInput.value = city;
+
+            searchWeather();
+
+        });
+
+        container.appendChild(item);
+
+    });
+
+}
