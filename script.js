@@ -364,7 +364,13 @@ function updateLocalTime(timezone) {
 }
 function changeBackground(weather) {
 
-    body.className = "";
+    body.classList.remove(
+        "sunny",
+        "cloudy",
+        "rainy",
+        "snowy",
+        "default"
+    );
 
     if (weather === "Clear") {
 
@@ -379,11 +385,9 @@ function changeBackground(weather) {
     }
 
     else if (
-
         weather === "Rain" ||
         weather === "Drizzle" ||
         weather === "Thunderstorm"
-
     ) {
 
         body.classList.add("rainy");
