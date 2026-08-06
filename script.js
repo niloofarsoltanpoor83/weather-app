@@ -205,52 +205,6 @@ weatherResult.innerHTML = `
 }
 
 
-async function getWeatherByLocation(lat, lon){
-
-    try{
-
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-        );
-
-        const data = await response.json();
-
-        document.getElementById("weatherResult").innerHTML = `
-            <h2>${data.name}</h2>
-            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
-
-                <div class="card">
-                    <h4>🌡️ Temperature</h4>
-                    <p>${data.main.temp} °C</p>
-                </div>
-
-                <div class="card">
-                    <h4>💧 Humidity</h4>
-                    <p>${data.main.humidity}%</p>
-                </div>
-
-                <div class="card">
-                    <h4>💨 Wind</h4>
-                    <p>${data.wind.speed} m/s</p>
-                </div>
-
-            </div>
-        `;
-
-        showWeatherAnimation(data.weather[0].main);
-
-    }catch(error){
-
-        console.log("THIS CATCH RUN:",error);
-
-        document.getElementById("weatherResult").innerHTML =
-        "<h2>Something went wrong!</h2>";
-
-    }
-
-}
-
-
 function showError(error){
 
     alert("Unable to get your location.");
@@ -525,59 +479,7 @@ function showWeatherAnimation(weather) {
     }
 
 }
- async function showPosition(position){
-
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-
-    const url =
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    console.log(data);
-
-    const weather = data.weather[0].main;
-
-    showWeatherAnimation(weather);
-
-    const icon = data.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-    document.getElementById("weatherResult").innerHTML = `
-        <h2>${data.name}</h2>
-        <img src="${iconUrl}" alt="Weather Icon">
-
-        <div class="weather-info">
-
-<div class="card">
-<h4>🌡️ Temperature</h4>
-<p>${data.main.temp} °C</p>
-  </div>
- <div class="card">
- <h4>💧 Humidity</h4>
- <p>${data.main.humidity}%</p>
- </div>
-  <div class="card">
-<h4>💨 Wind</h4>
- <p>${data.wind.speed} m/s</p>
- <div class="weather-info">
-<div class="card">
-    <h4>🌅 Sunrise</h4>
-    <p>${sunrise}</p>
-</div>
-
-<div class="card">
-    <h4>🌇 Sunset</h4>
-    <p>${sunset}</p>
-</div>
-            </div>
-
-        </div>
-    `;
-
-}
+   
 function displayAirQuality(data){
 
     const oldAirQuality = document.getElementById("airQuality");
@@ -669,7 +571,7 @@ function displayHourlyForecast(data){
         `;
 
     });
-
+}
 const themeBtn = document.getElementById("themeBtn");
 
 if(localStorage.getItem("theme") === "dark"){
