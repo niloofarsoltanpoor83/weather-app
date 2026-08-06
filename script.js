@@ -666,3 +666,16 @@ function renderFavorites(){
     });
 
 }
+renderFavorites();
+
+const favoriteBtn =
+document.getElementById("favoriteBtn");
+
+favoriteBtn.addEventListener("click",()=>{
+
+    const city =
+    document.getElementById("cityInput").value;
+
+    addFavorite(city);
+
+});
