@@ -661,7 +661,7 @@ function renderFavorites(){
 
             cityInput.value = city;
 
-            searchWeather();
+            getWeather();
 
         });
 
