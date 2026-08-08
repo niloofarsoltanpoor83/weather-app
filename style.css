@@ -418,3 +418,27 @@ body.dark input {
     background: #ef4444;
     font-size: 11px;
 }
+/* TEST DARK MODE */
+
+body.dark {
+    background: #111827 !important;
+    color: white !important;
+}
+
+body.dark .weather-box {
+    background: #1f2937 !important;
+    color: white !important;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p {
+    color: white !important;
+}
+
+body.dark input {
+    background: #374151 !important;
+    color: white !important;
+}
