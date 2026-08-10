@@ -358,87 +358,110 @@ body.snowy{
     }
 
 }
+/* =========================
+   MAIN TEMPERATURE
+========================= */
+
 .main-temperature{
     font-size:48px !important;
     font-weight:bold;
     margin:15px 0;
     letter-spacing:1px;
 }
-body.dark {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #f8fafc;
+
+
+/* =========================
+   FAVORITE CITIES
+========================= */
+
+.favorite-section{
+    margin-top:20px;
 }
 
-body.dark .weather-box {
-    background: rgba(15, 23, 42, 0.75);
+#favoriteCities{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+.favorite-city{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    border-radius:20px;
+    background:rgba(255,255,255,.25);
+    backdrop-filter:blur(10px);
+}
+
+.favorite-city span{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.favorite-city button{
+    width:auto;
+    padding:4px 7px;
+    border-radius:50%;
+    background:#ef4444;
+    font-size:11px;
+}
+
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+
+#themeBtn{
+    width:auto !important;
+    display:block;
+    padding:10px 18px;
+    margin:10px auto 15px;
+    font-size:14px;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark{
+    background:linear-gradient(135deg,#0f172a,#1e293b) !important;
+    color:#f8fafc !important;
+}
+
+body.dark .weather-box{
+    background:rgba(15,23,42,.75) !important;
+    color:#f8fafc !important;
 }
 
 body.dark .card,
 body.dark .forecast-card,
 body.dark .hour-card,
-body.dark .favorite-city {
-    background: rgba(30, 41, 59, 0.8);
-    color: #f8fafc;
-}
-
-body.dark input {
-    background: #334155;
-    color: white;
-}
-    .favorite-section {
-    margin-top: 20px;
-}
-
-#favoriteCities {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-.favorite-city {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.25);
-    backdrop-filter: blur(10px);
-}
-
-.favorite-city span {
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.favorite-city button {
-    width: auto;
-    padding: 4px 7px;
-    border-radius: 50%;
-    background: #ef4444;
-    font-size: 11px;
-}
-/* TEST DARK MODE */
-
-body.dark {
-    background: #111827 !important;
-    color: white !important;
-}
-
-body.dark .weather-box {
-    background: #1f2937 !important;
-    color: white !important;
+body.dark .favorite-city{
+    background:rgba(30,41,59,.8) !important;
+    color:#f8fafc !important;
 }
 
 body.dark h1,
 body.dark h2,
 body.dark h3,
 body.dark h4,
-body.dark p {
-    color: white !important;
+body.dark p{
+    color:#f8fafc !important;
 }
 
-body.dark input {
-    background: #374151 !important;
-    color: white !important;
+body.dark input{
+    background:#374151 !important;
+    color:white !important;
+}
+
+body.dark input::placeholder{
+    color:#cbd5e1;
+}
+
+body.dark .local-time,
+body.dark .forecast-date{
+    color:#cbd5e1 !important;
 }
