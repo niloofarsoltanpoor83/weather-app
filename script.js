@@ -588,7 +588,7 @@ if(localStorage.getItem("theme") === "dark"){
 themeBtn.addEventListener("click", () => {
 
     document.body.classList.toggle("dark");
-
+    alert(document.body.className);
     if(document.body.classList.contains("dark")){
         localStorage.setItem("theme","dark");
         themeBtn.textContent = "☀️ Light Mode";
