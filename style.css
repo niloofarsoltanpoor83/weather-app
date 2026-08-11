@@ -465,3 +465,40 @@ body.dark .local-time,
 body.dark .forecast-date{
     color:#cbd5e1 !important;
 }
+/* =========================
+   HEADER POLISH
+========================= */
+
+.weather-box h1{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+    margin-bottom:12px;
+}
+
+#themeBtn{
+    width:auto !important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:9px 16px;
+    margin:5px auto 18px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    transition:all .3s ease;
+}
+
+#themeBtn:hover{
+    transform:translateY(-2px);
+}
+
+/* Dark mode button */
+body.dark #themeBtn{
+    background:#475569;
+    color:#f8fafc;
+}
+
+body.dark #themeBtn:hover{
+    background:#64748b;
+}
