@@ -264,11 +264,25 @@ const sunset = formatTime(data.sys.sunset);
 const windDirection = getWindDirection(data.wind.deg);
     weatherResult.innerHTML = `
 
-       <h2>${data.name}, ${data.sys.country}</h2>
-       <p id="localTime"
-       class="local-time"></p>
-        <img src="${iconUrl}" alt="Weather Icon">
+      <div class="hero-weather">
 
+    <div class="city-name">
+        ${data.name}, ${data.sys.country}
+    </div>
+
+    <img class="weather-icon-big"
+         src="${iconUrl}"
+         alt="Weather Icon">
+
+    <div class="main-temperature">
+        ${Math.round(data.main.temp)}°C
+    </div>
+
+    <div class="weather-description">
+        ${data.weather[0].description}
+    </div>
+
+</div>
         <div class="weather-info">
 
             <div class="card">
