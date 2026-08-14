@@ -42,19 +42,23 @@ async function getWeather() {
             throw new Error("City not found");
         }
 
-        const data = await response.json();
+    try {
+    const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    );
 
-        displayWeather(data);
-        fetchForecast(city);
-    } catch (error) {
+    const data = await response.json();
 
-        console.log(error);
+    displayWeather(data);
+    fetchForecast(data.name);
 
-        weatherResult.innerHTML =
-            "<h2>City not found.</h2>";
+} catch(error) {
+    console.error("Weather API Error:", error);
 
-    }
-
+    weatherResult.innerHTML = `
+        <h2>Unable to get weather data.</h2>
+        <p>Please check your internet connection or try again.</p>
+    `;
 }
 async function fetchForecast(city){
 
@@ -147,8 +151,7 @@ const monthDay = date.toLocaleDateString("en-US", {
             <div class="forecast-card">
 
                 <h4>${weekDay}</h4>
-                <p class="forecast-date">$
-                {monthDay}</p>
+                <p class="forecast-date">${monthDay}</p>
                 <img src="${iconUrl}" alt="Weather Icon">
                  <p class="main-temperature">${Math.round(day.main.temp)} °C</p>
 
