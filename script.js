@@ -182,14 +182,14 @@ function getLocationWeather() {
 }
 
 async function showPosition(position) {
-
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-weatherResult.innerHTML = `
-    <h2>Loading weather data... ⏳</h2>
-`;
-    try {
 
+    weatherResult.innerHTML = `
+        <h2>Loading weather data... ⏳</h2>
+    `;
+
+    try {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
         );
@@ -197,16 +197,16 @@ weatherResult.innerHTML = `
         const data = await response.json();
 
         displayWeather(data);
-       fetchForecast(data.name);
+        fetchForecast(data.name);
 
-    }catch(error){
-    console.error("Weather API Error:", error);
+    } catch (error) {
+        console.error("Weather API Error:", error);
 
-    weatherResult.innerHTML = `
-        <h2>Unable to get weather data.</h2>
-        <p>Please check your internet connection or try again.</p>
-    `;
-}   
+        weatherResult.innerHTML = `
+            <h2>Unable to get weather data.</h2>
+            <p>Please check your internet connection or try again.</p>
+        `;
+    }
 }
 
 function showError(error){
