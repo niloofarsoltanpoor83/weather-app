@@ -348,15 +348,36 @@ function updateLocalTime(timezone) {
 
     clearInterval(clockInterval);
 
-    const timeElement = document.getElementById("updateTime");
+    let timeElement = document.getElementById("localTime");
+
+    // اگر localTime وجود نداشت، خودش آن را می‌سازد
+    if (!timeElement) {
+
+        timeElement = document.createElement("p");
+
+        timeElement.id = "localTime";
+        timeElement.className = "local-time";
+
+        const title = document.querySelector("#weatherResult h2");
+
+        if (title) {
+            title.insertAdjacentElement("afterend", timeElement);
+        } else {
+            console.log("localTime element could not be created.");
+            return;
+        }
+    }
 
     function refresh() {
 
         const now = new Date();
 
-        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const utc =
+            now.getTime() +
+            now.getTimezoneOffset() * 60000;
 
-        const cityTime = new Date(utc + timezone * 1000);
+        const cityTime =
+            new Date(utc + timezone * 1000);
 
         timeElement.textContent =
             "🕒 " +
