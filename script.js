@@ -204,7 +204,7 @@ weatherResult.innerHTML = `
         <p>Please check your internet connection or try again.</p>
     `;
 }   
-
+}
 
 function showError(error){
 
