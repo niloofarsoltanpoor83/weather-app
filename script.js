@@ -195,16 +195,15 @@ weatherResult.innerHTML = `
 
         displayWeather(data);
        fetchForecast(data.name);
-    } catch (error) {
 
-        console.log(error);
+   catch(error){
+    console.error("Weather API Error:", error);
 
-        weatherResult.innerHTML =
-            "<h2>Something went wrong!</h2>";
-
-    }
-
-}
+    weatherResult.innerHTML = `
+        <h2>Unable to get weather data.</h2>
+        <p>Please check your internet connection or try again.</p>
+    `;
+}   
 
 
 function showError(error){
