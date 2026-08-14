@@ -44,7 +44,7 @@ async function getWeather() {
         const data = await response.json();
 
         displayWeather(data);
-        gerCityPhoto(data.name);
+        showCityPhoto(data.name,data.sys.country);
         fetchForecast(city);
 
     } catch (error) {
@@ -194,7 +194,7 @@ async function showPosition(position) {
 
         displayWeather(data);
         fetchForecast(data.name);
-        getCityPhoto(data.name);
+       showCityPhoto(data.name,data.sys.country);
     } catch (error) {
         console.error("Weather API Error:", error);
 
