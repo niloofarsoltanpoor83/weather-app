@@ -199,7 +199,7 @@ weatherResult.innerHTML = `
         displayWeather(data);
        fetchForecast(data.name);
 
-   catch(error){
+    }catch(error){
     console.error("Weather API Error:", error);
 
     weatherResult.innerHTML = `
