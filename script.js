@@ -351,7 +351,7 @@ function updateLocalTime(timezone) {
 
     clearInterval(clockInterval);
 
-    const timeElement = document.getElementById("localTime");
+    const timeElement = document.getElementById("updateTime");
 
     function refresh() {
 
