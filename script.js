@@ -341,7 +341,30 @@ updateLocalTime(data.timezone);
     data.coord.lon
 );
 }
+async function showCityPhoto(city, country) {
 
+    const cityPhoto = document.getElementById("cityPhoto");
+    const cityPhotoImg = document.getElementById("cityPhotoImg");
+
+    if (!cityPhoto || !cityPhotoImg) return;
+
+    cityPhoto.classList.remove("show");
+
+    const cityName = encodeURIComponent(city);
+
+    const photoUrl =
+        `https://source.unsplash.com/1200x500/?${cityName},${encodeURIComponent(country)}`;
+
+    cityPhotoImg.onload = () => {
+        cityPhoto.classList.add("show");
+    };
+
+    cityPhotoImg.onerror = () => {
+        cityPhoto.classList.remove("show");
+    };
+
+    cityPhotoImg.src = photoUrl;
+}
 let clockInterval;
 
 function updateLocalTime(timezone) {
