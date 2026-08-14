@@ -33,7 +33,6 @@ async function getWeather() {
     weatherResult.innerHTML = "<h2>Loading...</h2>";
 
     try {
-
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
         );
@@ -42,23 +41,19 @@ async function getWeather() {
             throw new Error("City not found");
         }
 
-    try {
-    const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    );
+        const data = await response.json();
 
-    const data = await response.json();
+        displayWeather(data);
+        fetchForecast(city);
 
-    displayWeather(data);
-    fetchForecast(data.name);
+    } catch (error) {
 
-} catch(error) {
-    console.error("Weather API Error:", error);
+        console.log(error);
 
-    weatherResult.innerHTML = `
-        <h2>Unable to get weather data.</h2>
-        <p>Please check your internet connection or try again.</p>
-    `;
+        weatherResult.innerHTML =
+            "<h2>City not found.</h2>";
+
+    }
 }
 async function fetchForecast(city){
 
