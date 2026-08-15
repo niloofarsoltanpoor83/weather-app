@@ -351,24 +351,15 @@ function updateLocalTime(timezone) {
 
     let timeElement = document.getElementById("localTime");
 
-    // اگر localTime وجود نداشت، خودش آن را می‌سازد
-    if (!timeElement) {
+   if (!timeElement) {
 
-        timeElement = document.createElement("p");
+    timeElement = document.createElement("p");
 
-        timeElement.id = "localTime";
-        timeElement.className = "local-time";
+    timeElement.id = "localTime";
+    timeElement.className = "local-time";
 
-        const title = document.querySelector("#weatherResult h2");
-
-        if (title) {
-            title.insertAdjacentElement("afterend", timeElement);
-        } else {
-            console.log("localTime element could not be created.");
-            return;
-        }
-    }
-
+    weatherResult.prepend(timeElement);
+}
     function refresh() {
 
         const now = new Date();
