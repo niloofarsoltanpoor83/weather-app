@@ -1064,3 +1064,61 @@ body.dark .hour-card:hover {
         margin-right: auto;
     }
 }
+/* =========================
+   SEARCH AREA
+========================= */
+
+.search-area {
+    width: 100%;
+    text-align: center;
+}
+
+.search-area #cityInput {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.search-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-buttons button {
+    margin: 0;
+}
+
+.favorite-section {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#favoriteCities {
+    justify-content: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .search-area #cityInput {
+        max-width: 100%;
+    }
+
+    .search-buttons {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .search-buttons button {
+        flex: 1;
+    }
+}
