@@ -47,7 +47,7 @@ async function getWeather() {
         const data = await response.json();
 
         displayWeather(data);
-       getCityPhoto(data.name);
+    
 
     } catch (error) {
 
@@ -196,7 +196,7 @@ async function showPosition(position) {
 
         displayWeather(data);
         fetchForecast(data.name);
-       getCityPhoto(data.name);
+      
     } catch (error) {
         console.error("Weather API Error:", error);
 
@@ -717,49 +717,3 @@ favoriteBtn.addEventListener("click",()=>{
 
 });
                 
-async function getCityPhoto(city) {
-
-    const cityPhoto = document.getElementById("cityPhoto");
-    const cityPhotoImg = document.getElementById("cityPhotoImg");
-
-    if (!cityPhoto || !cityPhotoImg) return;
-
-    cityPhoto.classList.remove("show");
-
-    try {
-
-        const response = await fetch(
-            `https://api.pexels.com/v1/search?query=${encodeURIComponent(city)}&per_page=1&orientation=landscape`,
-            {
-                headers: {
-                    Authorization: "Nk57rkbz2ht5YrWMxgEz0i3VnlZ9XnYngaibViIFva25qjIaRy1SldXc"
-                }
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error(`Pexels error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (data.photos && data.photos.length > 0) {
-
-            cityPhotoImg.src = data.photos[0].src.large2x;
-            cityPhotoImg.alt = `${city} city photo`;
-
-            cityPhoto.classList.add("show");
-
-        } else {
-
-            console.log("No photo found for:", city);
-
-        }
-
-    } catch (error) {
-
-        console.error("City photo error:", error);
-        cityPhoto.classList.remove("show");
-
-    }
-}
