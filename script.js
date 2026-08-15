@@ -47,7 +47,7 @@ async function getWeather() {
         const data = await response.json();
 
         displayWeather(data);
-    
+        fetchForecast(data.name);
 
     } catch (error) {
 
