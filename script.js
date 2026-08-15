@@ -1,10 +1,13 @@
 console.log("Script version2");
 
 const API_KEY = "c7246f4ed11c174296162dff32c97872";
+
 // Favorite Cities
 let favoriteCities =
+    JSON.parse(localStorage.getItem("favoriteCities")) || [];
+
 let clockInterval;
-JSON.parse(localStorage.getItem("favoriteCities")) || [];
+
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
 const locationBtn = document.getElementById("locationBtn");
@@ -21,7 +24,6 @@ cityInput.addEventListener("keydown", function (event) {
         getWeather();
     }
 });
-
 async function getWeather() {
 
     const city = cityInput.value.trim();
